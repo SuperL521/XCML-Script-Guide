@@ -10,7 +10,7 @@ XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初
 
 此外，由于XCML Script之前没有统一规范，以至于目前已有的Zhe Script代码可读性不佳。我们强烈建议您按照本网站提供的规范来写XCML Script以避免不必要的错误。XCML Script的解析在CM Launcher下完成，因此我们建议您保持你的CM Launcher时刻为最新版本以避免已被消除的bug和支持全部功能。
 
-开发人员：王哲，唐继，李海池，陈志文，陈兆起，邵文彬，刘佳
+开发人员：王哲，唐际，李海池，陈志文，陈兆起，邵文彬，刘佳
 
 文档编写和维护：邵文彬
 
