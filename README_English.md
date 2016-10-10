@@ -68,8 +68,8 @@ Which effect is defined in the CM Launcher cut the screen when the icon rotation
 <Theme effect = "sphere" version = "1">
   <Wallpaper name = "elementWallpaper">
     <! - your codes here ->
-  </ Wallpaper>
-</ Theme>
+  </Wallpaper>
+</Theme>
 ```
 
 This is only one way.
@@ -113,9 +113,9 @@ Group is a collection of Objects, a Group tag can contain any number of arbitrar
   <Image name = "test1" texture = "img" />
   <Group name = "group1">
     <Image name = "test2" texture = "img" />
-  </ Group>
+  </Group>
   <Image name = "test3" texture = "img" />
-</ Group>
+</Group>
 ```
 
 Where group0 is the parent of group1, and group1 is the parent of test2 inside it. In short, Group is to describe the different parent-child relationship between Object. Such as Object, you can operate one Group directly through its name:
@@ -218,7 +218,7 @@ Bin Script is currently being refined. Curly braces are not supported, so be sur
 <! [CDATA [
   var test_your_codes_here = 0;
 ]]>
-</ Script>
+</Script>
 ```
 
 In the bottom of the program, Bin Script code will be translated into Zhe Script code.
@@ -247,7 +247,7 @@ Because they do not support curly brackets, event functions need to be separated
 
 ```
 function onDrawStart ();
-var test_your_codes_here = 0;
+  var test_your_codes_here = 0;
 endfunction;
 ```
 
@@ -271,21 +271,21 @@ var test1 = false;
 var test_your_value = 0;
 
 if (test0);
-test_your_value = 1;
+  test_your_value = 1;
 endif;
 
 if (test0);
-test_your_value = 1;
+  test_your_value = 1;
 else;
-test_your_value = 2;
+  test_your_value = 2;
 endif;
 
 if (test0);
-test_your_value = 1;
+  test_your_value = 1;
 else if (test1);
-test_your_value = 2;
+  test_your_value = 2;
 else;
-test_your_value = 3;
+  test_your_value = 3;
 endif;
 ```
 
@@ -296,7 +296,7 @@ var test0 = 0;
 var test1 = 1;
 
 if (test0 <test1);
-test0 = 2;
+  test0 = 2;
 endif;
 ```
 
@@ -320,7 +320,7 @@ The general template for calling the event function is:
 var test_your_value = 0;
 
 function onDrawStart ();
-test_your_value = 1;
+  test_your_value = 1;
 endfunction;
 ```
 
@@ -334,9 +334,9 @@ Each Object has an init method to do some initialization. As mentioned above, mo
 
 ```
 function init ();
-var CanvasWidth = ThemeVariable.getCanvasWidth ();
-var scaleUnit = exp (CanvasWidth / 540f);
-test.setScale (scaleUnit);
+  var CanvasWidth = ThemeVariable.getCanvasWidth ();
+  var scaleUnit = exp (CanvasWidth / 540f);
+  test.setScale (scaleUnit);
 endfunction;
 ```
 
@@ -344,7 +344,7 @@ Typically, the initialization is to carry out some screen adaptation operation. 
 
 ```
 function drawWallpaper ();
-group.dispatchDraw ();
+  group.dispatchDraw ();
 endfunction;
 ```
 
@@ -359,13 +359,15 @@ endfunction;
 These two functions are called at the start and end of the desktop slideshow. Most of the time, you need to work with a boolean variable to control a 3D model, for example:
 
 ```
-Var isDesktopEffectRunning = false;
-Function onDesktopEffectStart ();
-IsDesktopEffectRunning = true;
-Endfunction;
-Function onDesktopEffectEnd ();
-IsDesktopEffectRunning = false;
-Endfunction;
+var isDesktopEffectRunning = false;
+
+function onDesktopEffectStart ();
+  isDesktopEffectRunning = true;
+endfunction;
+
+function onDesktopEffectEnd ();
+  isDesktopEffectRunning = false;
+endfunction;
 ```
 
 ### 4. OnIconStartDrag / onIconEndDrag
