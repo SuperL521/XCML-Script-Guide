@@ -1,12 +1,12 @@
 #XCML Script教程
 
 ##简介
-XCML Script是CM Launcher研发团队为开发安卓3D主题而开发的一种描述性脚本语言。CM Launcher的安卓3D主题与其他安卓主题类似，仅有资源文件和描述性的xml文件构成。随着功能的增多，其中描述3D主题的xml文件launcher_theme_3d_model.xml被添加了越来越多的功能，渐渐地成为了一套功能完备的简单语言。XCML Script文件会在安卓进程CM Launcher里程序里解析后在该进程中运行，换言之没有编译的过程，其实只是一种中间码。XCML Script的独特之处在于它可以用来描述3D模型的种种动画和脚本，这一切的底层是CM Launcher团队强大的GLView引擎，基于OpenGL ES。
+XCML Script是CM Launcher研发团队为开发安卓3D主题而开发的一种描述性脚本语言。CM Launcher的安卓3D主题与其他安卓主题类似，仅有资源文件和描述性的XML文件构成。随着功能的增多，其中描述3D主题的XML文件launcher_theme_3d_model.xml被添加了越来越多的功能，渐渐地成为了一套功能完备的简单语言。XCML Script文件会在Android进程CM Launcher里程序里解析后在该进程中运行，换言之，只有编译的过程，其实只是一种中间码。XCML Script的独特之处在于它可以用来描述3D模型的种种动画和脚本，这一切的底层是CM Launcher团队强大的GLView引擎，基于OpenGL ES。
 
 ###1. Zhe Script和Bin Script
-XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初的版本，完全通过xml来进行所有的操作。Bin Script是Zhe Script的升级版，是将Zhe Script中的script部分多加了一层解析器，可以使用类C语言语法来编程。
+XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初的版本，完全通过XML来进行所有的操作。Bin Script是Zhe Script的升级版，是将Zhe Script中的script部分多加了一层解析器，可以使用类C语言语法来编程。
 
-**实质上，Zhe Script就是使用xml描述3D主题的空间布局，Bin Script描述的是布局下的各个组件对不同事件做出的反应来实现交互、动画等效果。**
+**实质上，Zhe Script就是使用XML描述3D主题的空间布局，Bin Script描述的是布局下的各个组件对不同事件做出的反应来实现交互、动画等效果。**
 
 ###2. ISSUES
 学习XCML Script最大的问题在于两点：
@@ -25,7 +25,7 @@ XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初
 
 ##3D主题框架
 
-如上文所述，3D主题是建立在一套安卓主题框架下。这一套框架具体有两大部分组成：资源文件（icons/weather/wallpaper/3d models）和描述性xml文件。本部分简略介绍这个框架的每个部分的作用。关于这个主题架构本教程只是简单介绍，具体的细节请参考CM Launcher的DIY主题教程。
+如上文所述，3D主题是建立在一套安卓主题框架下。这一套框架具体有两大部分组成：资源文件（icons/weather/wallpaper/3d models）和描述性XML文件。本部分简略介绍这个框架的每个部分的作用。关于这个主题架构本教程只是简单介绍，具体的细节请参考CM Launcher的DIY主题教程。
 
 ###1. icons/app_theme_icons.xml
 
@@ -43,20 +43,20 @@ XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初
 
 ##XCML Script的基础框架和常用标签
 
-Bin Script需要嵌套在Zhe Script中，Zhe Script可以单独使用。Zhe Script其实就是一种xml，基本语法也与xml等同。
+Bin Script需要嵌套在Zhe Script中，Zhe Script可以单独使用。Zhe Script其实就是一种XML，基本语法也与XML等同。
 
-###1. 从xml开始
+###1. 从XML开始
 
-作为xml的一种延伸，XCML Script也必须遵循xml的基本格式，必须这样开头：
+作为XML的一种延伸，XCML Script也必须遵循XML的基本格式，必须这样开头：
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
+<?XML version="1.0" encoding="UTF-8"?>
 ```
 
 
 ###2. 最外层标签：Theme和Wallpaper
 
-Theme是XCML Script最外层标签，XCML Script必须强制从这个标签开始。举例：
+Theme是XCML Script最外层标签，XCML Script必须强制从这个标签开始。
 
 其中effect定义的是CM Launcher中切屏时的图标旋转效果，目前仅支持sphere即圆球滚动。
 Wallpaper是仅次于Theme标签以外的最外层标签，标准化写法为：
@@ -94,7 +94,7 @@ Object并不是一个标签或数据类型，而是一个基本概念，指XCML 
 XCML Script中，每个Object都有一些自己的变量和函数，但是只能通过Object来调用函数而不能直接访问变量。比如如果想获得test图片的宽度，就只能使用如下操作：
 
 ```xml
-<CallMethod model="test" method="getWidth" args="2" />
+<CallMethod model="test" method="getWidth" target="testwidth" />
 ```
 
 相当于每个class的变量全部都是私有变量。
@@ -194,8 +194,6 @@ XCML Script支持的obj格式为3ds max下导出的obj格式。因此如果您�
 
 XCML Script支持的dae格式为3ds max、maya下导出的dae格式(勾选三角算法、单一矩阵)。目前导出的dae模型的动画只支持整个物体的旋转、缩放、平移，可能会出现个别节点没有解析的情况。支持模型有嵌套关系、支持模型没有纹理和法向量数据。请注意，场景中用不到的模型必须全部删除,之后再导出dae格式.不支持顶点颜色属性。不支持骨骼动画。
 
-**如果一个场景有多个模型，请现在建模软件里加载全部模型调整好大小比例和位置后再逐一导出。在XCML Script里调整会太过于繁琐并且可能会出现适配问题。**
-
 ###3. 模型精度和贴图尺寸
 
 由于模型文件会在一开始被一次性读入，过大的模型会导致读取较慢甚至out of memory崩溃。因此模型文件应当尽可能的小，请在导出时删除不必要的信息。考虑到低端安卓手机支持的图片尺寸有限制，在使用较大图片（大于1920*1080）时，请存储为较小尺寸再在程序中进行放大操作。
@@ -206,7 +204,7 @@ XCML Script支持的dae格式为3ds max、maya下导出的dae格式(勾选三角
 
 ###5. 屏幕适配问题和方案
 
-屏幕适配一直是安卓应用不可避免的大问题，由于安卓手机品类过多，不同品牌不同型号的手机屏幕尺寸和分辨率差距极大。而在3d场景中，不一样的尺寸和分辨率出现的效果可能完全不同。为了解决适配问题，请尽量避免使用以px为单位的操作而使用以dp为单位的操作。对Object进行的缩放操作，请使用上文提到的ThemeCommonUtils转换数值后再用作函数参数。为减少繁琐的操作，请不要使用过多的涉及到位置信息的动画。
+屏幕适配一直是Android应用不可避免的大问题，由于Android手机品类过多，不同品牌不同型号的手机屏幕尺寸和分辨率差距极大。而在3d场景中，不一样的尺寸和分辨率出现的效果可能完全不同。为了解决适配问题，请尽量避免使用以px为单位的操作而使用以dp为单位的操作。对Object进行的缩放操作，请使用上文提到的ThemeCommonUtils转换数值后再用作函数参数。为减少繁琐的操作，请不要使用过多的涉及到位置信息的动画。
 
 ##Bin Script语法##
 
@@ -233,7 +231,7 @@ var test_boolean = true;
 
 float型变量必须以f结尾。boolean型必须用"true"或者"false"来定义和赋值，不支持其他赋值方式也不支持与其他类型的强制转换。不支持long或double等数据类型，最大只支持4个字节，请注意不要产生变量溢出。
 
-var变量的作用域为变量所在的标签或函数内。换言之，如果按照要求把所有脚本都写在wallpaper后的script下的事件函数之外，则所有的变量均可以作用于全局。与JS类似，var可以先使用再声明。gvar是全局变量，声明后可在整个xml文件内作用。
+var变量的作用域为变量所在的标签或函数内。换言之，如果按照要求把所有脚本都写在wallpaper后的script下的事件函数之外，则所有的变量均可以作用于全局。与JS类似，var可以先使用再声明。gvar是全局变量，声明后可在整个XML文件内作用。
 
 **我们建议在变量声明时务必赋予一个初始值**
 
