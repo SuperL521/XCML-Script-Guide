@@ -1,14 +1,23 @@
 #XCML Script教程
 
+##简介
 XCML Script是CM Launcher研发团队为开发安卓3D主题而开发的一种描述性脚本语言。CM Launcher的安卓3D主题与其他安卓主题类似，仅有资源文件和描述性的xml文件构成。随着功能的增多，其中描述3D主题的xml文件launcher_theme_3d_model.xml被添加了越来越多的功能，渐渐地成为了一套功能完备的简单语言。XCML Script文件会在安卓进程CM Launcher里程序里解析后在该进程中运行，换言之没有编译的过程，其实只是一种中间码。XCML Script的独特之处在于它可以用来描述3D模型的种种动画和脚本，这一切的底层是CM Launcher团队强大的GLView引擎，基于OpenGL ES。
 
+###1. Zhe Script和Bin Script
 XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初的版本，完全通过xml来进行所有的操作。Bin Script是Zhe Script的升级版，是将Zhe Script中的script部分多加了一层解析器，可以使用类C语言语法来编程。
 
+**实质上，Zhe Script就是使用xml描述3D主题的空间布局，Bin Script描述的是布局下的各个组件对不同事件做出的反应来实现交互、动画等效果。**
+
+###2. ISSUES
 学习XCML Script最大的问题在于两点：
 1. 由于历史原因，有很多API用处少、有bug且不规范，但是为了向上兼容，这些旧API又必须被保留，因此极容易与现有API混淆；
 2. 由于最初需求、基础架构等等问题，目前的XCML Script的编程范式极为诡异：既面向对象又面向过程，既有事件驱动又有函数响应式，因而显得不伦不类，学习成本很高。
 
 此外，由于XCML Script之前没有统一规范，以至于目前已有的Zhe Script代码可读性不佳。我们强烈建议您按照本网站提供的规范来写XCML Script以避免不必要的错误。XCML Script的解析在CM Launcher下完成，因此我们建议您保持你的CM Launcher时刻为最新版本以避免已被消除的bug和支持全部功能。
+
+###3. STAFF
+
+所有方： Cheetah Mobile
 
 开发人员：王哲，唐际，李海池，陈志文，陈兆起，邵文彬，刘佳
 
@@ -18,19 +27,19 @@ XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初
 
 如上文所述，3D主题是建立在一套安卓主题框架下。这一套框架具体有两大部分组成：资源文件（icons/weather/wallpaper/3d models）和描述性xml文件。本部分简略介绍这个框架的每个部分的作用。关于这个主题架构本教程只是简单介绍，具体的细节请参考CM Launcher的DIY主题教程。
 
-icons/app_theme_icons.xml
+###1. icons/app_theme_icons.xml
 
-weather
+###2. weather
 
-wallpaper
+###3. wallpaper
 
-3d models
+###4. 3d models
 
-launcher_theme_config.xml
+###5. launcher_theme_config.xml
 
-app_theme_icons.xml
+###6. app_theme_icons.xml
 
-launcher_theme_3d_model.xml
+###7. launcher_theme_3d_model.xml
 
 ##XCML Script的基础框架和常用标签
 
