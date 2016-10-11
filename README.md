@@ -192,7 +192,16 @@ XCML Script支持的obj格式为3ds max下导出的obj格式。因此如果您�
 
 ###2. DAE格式
 
-XCML Script支持的dae格式为3ds max、maya下导出的dae格式(勾选三角算法、单一矩阵)。目前导出的dae模型的动画只支持整个物体的旋转、缩放、平移，可能会出现个别节点没有解析的情况。支持模型有嵌套关系、支持模型没有纹理和法向量数据。请注意，场景中用不到的模型必须全部删除,之后再导出dae格式.不支持顶点颜色属性。不支持骨骼动画。
+XCML Script支持的dae格式为3ds max、maya下导出的dae格式(勾选三角算法、单一矩阵)。目前导出的dae模型的帧动画只支持整个物体的旋转、缩放、平移，可能会出现个别节点没有解析的情况。支持模型有嵌套关系、支持模型没有纹理和法向量数据。请注意，场景中用不到的模型必须全部删除,之后再导出dae格式。不支持顶点颜色属性。不支持骨骼动画。在XCML中的使用方法为:Model节点下的modelType定义为DAE即可。
+
+```xml
+<Model name="koi_1" modelType="DAE" modelfile="dae_koi" x="-200" z="300" texture="koi_body_texture_1" animationMode="LOOP" depthTestEnabled="true">
+  <Script>
+  <!--your codes here-->
+  </Script>
+</Model>
+```
+在Model节点下可以定义模型的名字、类型（dae/obj）、文件名、位置信息（x/y/z）、纹理图、动画模式（标准：只播一次、重复播、循环播）等内容（不必要的内容可以不定义）。然后在Script节点下就可以通过调用方法对模型进行处理了。
 
 ###3. 模型精度和贴图尺寸
 
