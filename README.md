@@ -164,23 +164,8 @@ Script部分是XCML Script的重点所在。所谓Bin Script就是把Script标�
 
 ###3. Image
 
-##全局静态函数和静态变量##
 
-###1. Math
 
-###2. Calculate
-
-###3. ThemeCommonUtils
-
-###4. SensorConverter
-
-###5. Product
-
-###6. TimeData
-
-###7. Setting
-
-###8. 全局静态变量
 
 ##模型导入和屏幕适配##
 
@@ -213,7 +198,19 @@ XCML Script支持的dae格式为3ds max、maya下导出的dae格式(勾选三角
 
 ###5. 屏幕适配问题和方案
 
-屏幕适配一直是Android应用不可避免的大问题，由于Android手机品类过多，不同品牌不同型号的手机屏幕尺寸和分辨率差距极大。而在3d场景中，不一样的尺寸和分辨率出现的效果可能完全不同。为了解决适配问题，请尽量避免使用以px为单位的操作而使用以dp为单位的操作。对Object进行的缩放操作，请使用上文提到的ThemeCommonUtils转换数值后再用作函数参数。为减少繁琐的操作，请不要使用过多的涉及到位置信息的动画。
+屏幕适配一直是Android应用不可避免的大问题，由于Android手机品类过多，不同品牌不同型号的手机屏幕尺寸和分辨率差距极大。而在3d场景中，不一样的尺寸和分辨率出现的效果可能完全不同。为了解决适配问题，请尽量避免使用以px为单位的操作而使用以dp为单位的操作。对Object进行的缩放操作，请使用上文提到的ThemeCommonUtils和ThemeVariable转换数值后再用作函数参数。为减少繁琐的操作，请不要使用过多的涉及到位置信息的动画。我们建议您在设计时以xxhdpi（1920*1080）为参考标准，然后在脚本里进行一些适配操作。如下代码可以让一个xxhdpi标准下设计的模型在手机上全屏：
+
+```
+test.setScale(CANVAS_SCALEXXHDPI);
+```
+
+如下代码可以获得xxhdpi标准下Y坐标为-1200的数值
+
+```
+var test = ThemeVariable.xxhdpi(-1200);
+```
+
+这里的CANVAS_SCALEXXHDPI是系统全局变量，ThemeVariable是系统全局函数。这里使用到了Bin Script的函数调用语法，将在下一章节详述。
 
 ##Bin Script语法##
 
@@ -240,7 +237,11 @@ var test_boolean = true;
 
 float型变量必须以f结尾。boolean型必须用"true"或者"false"来定义和赋值，不支持其他赋值方式也不支持与其他类型的强制转换。不支持long或double等数据类型，最大只支持4个字节，请注意不要产生变量溢出。
 
-var变量的作用域为变量所在的标签或函数内。换言之，如果按照要求把所有脚本都写在wallpaper后的script下的事件函数之外，则所有的变量均可以作用于全局。与JS类似，var可以先使用再声明。gvar是全局变量，声明后可在整个XML文件内作用。
+var变量的作用域为变量所在的标签或函数内。与JS类似，var可以先使用再声明。gvar是全局变量，声明后可在整个XML文件内作用。我们建议全局变量以小写g开头的代码规范。如：
+
+```
+gvar gTest = 0;
+```
 
 **我们建议在变量声明时务必赋予一个初始值**
 
@@ -317,7 +318,7 @@ test.setScale(scale);
 
 ##事件驱动编程
 
-如上文所说，复杂的编程范式是XCML Script的难点所在。事件驱动编程是游戏开发中常用的编程范式，它指对不同的事件执行对应的程序。也就是说，绝大部分的脚本都是在特定的事件下运行。在特定的事件外，只能进行一些变量的声明等操作。代码模块之间的逻辑关系也就是不同事件下的逻辑关系。XCML Script目前支持以下6种类型的事件函数。
+如上文所说，复杂的编程范式是XCML Script的难点所在。事件驱动编程是游戏开发中常用的编程范式，它指对不同的事件执行对应的程序。也就是说，绝大部分的脚本都是在特定的事件下运行。在特定的事件外，只能进行一些变量的声明等操作。代码模块之间的逻辑关系也就是不同事件下的逻辑关系。XCML Script目前支持6种类型的事件函数。在引擎底层，每有一个系统事件函数就会注册一个监听事件，当对应的监听事件达到要求即调用对应的函数。
 
 调用事件函数的通用模板为：
 
@@ -329,7 +330,7 @@ function onDrawStart();
 endfunction;
 ```
 
-这里的onDrawStart就是6种事件函数之一，将它替换成其他名字即是调用其他事件函数。由于只有这固定的6种事件函数，所有函数也没有参数表和返回值。暂时还不支持自定义函数。
+这里的onDrawStart就是6种事件函数之一，将它替换成其他名字即是调用其他事件函数。由于只有这固定的6种事件函数，所有函数也没有参数表和返回值。暂时还不支持自定义函数。每个函数里都有一些专属变量来方便操作。
 
 **除此6种事件外，其实还有一种不标准的写法。在script标签内直接写入一些脚本，在某些情况下，这些脚本可能会在初始化时运行一次，即效果如同写在init下。我们强烈建议放弃这种写法。**
 
@@ -339,13 +340,11 @@ endfunction;
 
 ```
 function init();
-  var CanvasWidth = ThemeVariable.getCanvasWidth();
-  var scaleUnit = exp(CanvasWidth/540f);
-  test.setScale(scaleUnit);
+  test.setScale(CANVAS_SCALE_FROM540);
 endfunction;
 ```
 
-通常，初始化都是进行一些屏幕适配操作。drawWallpaper与init类似，也是进行一些初始化操作，不同的是drawWallpaper只能在特殊标签Wallpaper内调用。如果按照我们的建议只在Wallpaper里使用Script，则drawWallpaper和init的功能等同。drawWallpaper还有一个常用的特殊功能就是上文提到过的dispatchDraw。下面的代码展示将一个名为group的Group使用dispatchDraw，如果不使用该函数会导致该group内的所有Object无法显示。
+CANVAS_SCALE_FROM540是一个系统全局变量。通常，初始化都是进行一些屏幕适配操作。drawWallpaper与init类似，也是进行一些初始化操作，不同的是drawWallpaper只能在特殊标签Wallpaper内调用。如果按照我们的建议只在Wallpaper里使用Script，则drawWallpaper和init的功能等同。drawWallpaper还有一个常用的特殊功能就是上文提到过的dispatchDraw。下面的代码展示将一个名为group的Group使用dispatchDraw，如果不使用该函数会导致该group内的所有Object无法显示。
 
 ```
 function drawWallpaper();
@@ -383,18 +382,55 @@ endfunction;
 onTouchDown在触摸开始的时候调用
 onTouchUp在触摸结束时调用
 onTouchMove在触摸移动时调用，可以用来捕捉触摸轨迹，在触摸开始和结束时也会被调用。通常用作实现手势跟随效果。
-对应的有onTouchDown_x/onTouchDown_y, onTouchUp_x/onTouchUp_y, onTouchMove_x/onTouchMove_y，三对全局静态变量，在对应的事件下调用对应的变量来实现要求的功能。
 
-举例：
+对应的有onTouchDown_x/onTouchDown_y, onTouchUp_x/onTouchUp_y, onTouchMove_x/onTouchMove_y，三对专属变量，在对应的事件下调用对应的变量来实现要求的功能。
+
+###6. onRotationVectorSensorChanged
+
+在RotationVectorSensor改变时被调用，最常用的就是用来获得当前手机的旋转角度。
+在我们的测试过程中，这个系统事件函数被证明是最耗电的。在底层，RotationVectorSensor是每3帧调用一次，这也是为了节省电量，因此仔细观察会有轻微的不流畅。与触摸事件函数类似，该事件函数也有专属的静态变量：
+
+|-------------------------------|------------------|
+|onRotationVectorSensorChanged_x|x轴上sensor旋转的值|
+|onRotationVectorSensorChanged_y|y轴上sensor旋转的值|
+|onRotationVectorSensorChanged_z|z轴上sensor旋转的值|
+
+以下代码实现了每当手机屏幕旋转时，模型test也跟着旋转：
+
+```
+gvar gRotationX = 0;
+gvar gRotationY = 0;
+
+function onDrawStart();
+  test.setRotationX(gRotationX);
+  test.setRotationY(gRotationY);
+endfunction;
+
+function onRotationVectorSensorChanged();
+  gRotationX = onRotationVectorSensorChanged_x;
+  gRotationY = onRotationVectorSensorChanged_y;
+endfunction;
+
+```
+
+##全局静态函数和静态变量##
+
+###1. Math
+
+###2. Calculate
+
+###3. ThemeCommonUtils
+
+###5. Product
+
+###6. TimeData
+
+###7. Setting
+
+###8. 系统全局变量
 
 
-###6. onSensorChanged
-
-在sensor改变时被调用，最常用的就是用来获得当前陀螺仪的旋转角度。在我们的测试过程中，sensor被证明是最耗电的，所以如果出于省电考虑，可以不使用sensor。在底层，sensor是每3帧调用一次，这也是为了节省电量，因此仔细观察会有轻微的不流畅。由于目前引擎并没有camera类，大部分3D主题的立体感都依靠响应sensor来实现。与触摸事件函数类似，该事件函数也有专属的静态变量。
-举例：
-
-
-##特殊的Object
+##特殊的变量
 
 ###1. ValueInterpolate
 
