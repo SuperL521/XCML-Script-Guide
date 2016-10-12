@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<themeConfigs xmlns:cmlauncher="http://schemas.android.com/apk/res-auto/" >
+    <model
+        cmlauncher:config_drawable="wallpaper/wallpaper_background.jpg"
+        cmlauncher:config_name="wallpaper" />
+    <model
+        cmlauncher:config_drawable="icons/icon_folder.png"
+        cmlauncher:config_name="folder" />
+    <model
+        cmlauncher:config_drawable="icons/icon_shade.png"
+        cmlauncher:config_name="iconhighlight" />
+    <model
+        cmlauncher:config_drawable="icons/icon_backgrand.png"
+        cmlauncher:config_name="iconbg" />
+    <model
+        cmlauncher:config_drawable="icons/mask_backgrand.png"
+        cmlauncher:config_name="iconmask" />
+    <model
+        cmlauncher:config_drawable="icons/mask_background_white.png"
+        cmlauncher:config_name="clean_bg" />
+    <model
+        cmlauncher:config_drawable="icons/change_wallpaper_arrow.png"
+        cmlauncher:config_name="changewp_arrow" />
+    <!-- <model
+        cmlauncher:config_drawable="icons/change_wallpaper_bg.png"
+        cmlauncher:config_name="changewp_bg" /> -->
+    <model
+        cmlauncher:config_drawable="icons/change_wallpaper_color.png"
+        cmlauncher:config_name="changewp_color" />
+    <!-- 控制文件夹ICON间距，launcher支持，打包平台目前不支持配置 -->
+    <!--model
+        cmlauncher:config_name="folder_middle"
+        cmlauncher:config_value="3" />
+    <model
+        cmlauncher:config_name="folder_padding"
+        cmlauncher:config_value="8" /-->
+    <model
+        cmlauncher:config_name="icon_crop_padding"
+        cmlauncher:config_value="false" />
+    <!--     single bg 为只有背板和蒙版时改为true，launcehr中使用程序自带图标也会被处理 -->
+    <model
+        cmlauncher:config_name="single_bg"
+        cmlauncher:config_value="false" />
+    <!-- single_wallpaper:壁纸是强制单屏 -->
+    <model
+        cmlauncher:config_name="single_wallpaper"
+        cmlauncher:config_value="true" />
+    <!--     folder_bg 为 打开文件夹后显示背景 -->
+    <model
+        cmlauncher:config_name="folder_bg"
+        cmlauncher:config_drawable="wallpaper/folder_bg.jpg" />
+    <model cmlauncher:config_name="weather" >
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_sunny.png"
+            cmlauncher:config_name="qing_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_cloudless.png"
+            cmlauncher:config_name="qing_night_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_cloudy.png"
+            cmlauncher:config_name="duoyun_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_cloudy_night.png"
+            cmlauncher:config_name="duoyun_night_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_rain.png"
+            cmlauncher:config_name="yu_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_thundershower.png"
+            cmlauncher:config_name="leiyu_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_overcast.png"
+            cmlauncher:config_name="yin_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_fog.png"
+            cmlauncher:config_name="wu_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_foggy_night.png"
+            cmlauncher:config_name="wu_night_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_sand_storm.png"
+            cmlauncher:config_name="feng_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_tornado.png"
+            cmlauncher:config_name="jufeng" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_snow.png"
+            cmlauncher:config_name="xue_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_icon_sleet.png"
+            cmlauncher:config_name="yujiaxue_upgrade" />
+        <icon
+            cmlauncher:config_drawable="weather/weather_bg.9.png"
+            cmlauncher:config_name="background" />
+    </model>
+
+     <model cmlauncher:config_name="alert_widget_weather" >
+        <icon
+            cmlauncher:config_drawable="weather/alert_clock_widget_water_0.png"
+            cmlauncher:config_name="alert_clock_widget_water_0" />
+        <icon
+            cmlauncher:config_drawable="weather/alert_clock_widget_water_1.png"
+            cmlauncher:config_name="alert_clock_widget_water_1" />
+        <icon
+            cmlauncher:config_drawable="weather/alert_clock_widget_water_2.png"
+            cmlauncher:config_name="alert_clock_widget_water_2" />
+        <icon
+            cmlauncher:config_drawable="weather/alert_clock_widget_lighthouse_day.png"
+            cmlauncher:config_name="alert_clock_widget_lighthouse_day" />
+        <icon
+            cmlauncher:config_drawable="weather/alert_clock_widget_lighthouse_night.png"
+            cmlauncher:config_name="alert_clock_widget_lighthouse_night" />
+        <icon
+            cmlauncher:config_drawable="weather/alert_clock_widget_ship.png"
+            cmlauncher:config_name="alert_clock_widget_ship" />
+    </model>
+
+    <model cmlauncher:config_name="BGwall"
+        cmlauncher:config_value="3d_model/BGwall.obj"/>
+    <model cmlauncher:config_name="body"
+        cmlauncher:config_value="3d_model/body.obj"/>
+    <model cmlauncher:config_name="bottom"
+        cmlauncher:config_value="3d_model/bottom.obj"/>
+    <model cmlauncher:config_name="pokemonballup"
+        cmlauncher:config_value="3d_model/ufo.obj"/>
+    <!--<model cmlauncher:config_name="pokemonballdown"
+        cmlauncher:config_value="3d_model/pokemonballdown.obj"/>-->
+
+    <model cmlauncher:config_name="3d_model">
+        <icon cmlauncher:config_name="BGwall_texture"
+              cmlauncher:config_drawable="3d_model/texture/BGwall.png"></icon>
+        <icon cmlauncher:config_name="body_texture"
+              cmlauncher:config_drawable="3d_model/texture/body.png"></icon>
+        <icon cmlauncher:config_name="bottom_texture"
+              cmlauncher:config_drawable="3d_model/texture/bottom.png"></icon>
+        <icon cmlauncher:config_name="ball_texture"
+              cmlauncher:config_drawable="3d_model/texture/ufo.png"></icon>
+    </model>
+    <!--<model cmlauncher:config_name="screen_effect" cmlauncher:config_value="CYLINDER"/>-->
+</themeConfigs>

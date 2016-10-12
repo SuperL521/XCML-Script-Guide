@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<themeIcons xmlns:cmlauncher="http://schemas.android.com/apk/res-auto/" >
+
+    <!-- cm_icon_type:0:system_app_icon,1:normal_app_icon,2:custom_app_icon -->
+    <icons cmlauncher:icon_type="0" >
+        <icon
+            cmlauncher:icon="icons/browser.png"
+            cmlauncher:icon_name="browser" />
+        <icon
+            cmlauncher:icon="icons/calculator.png"
+            cmlauncher:icon_name="calculator" />
+        <icon
+            cmlauncher:icon="icons/calendar.png"
+            cmlauncher:icon_name="calendar" />
+        <icon
+            cmlauncher:icon="icons/camera.png"
+            cmlauncher:icon_name="camera" />
+        <icon
+            cmlauncher:icon="icons/clock.png"
+            cmlauncher:icon_name="clock" />
+        <icon
+            cmlauncher:icon="icons/contact.png"
+            cmlauncher:icon_name="contact" />
+        <icon
+            cmlauncher:icon="icons/download.png"
+            cmlauncher:icon_name="download" />
+        <icon
+            cmlauncher:icon="icons/email.png"
+            cmlauncher:icon_name="email" />
+        <icon
+            cmlauncher:icon="icons/filemanager.png"
+            cmlauncher:icon_name="filemanager" />
+        <icon
+            cmlauncher:icon="icons/flashlight.png"
+            cmlauncher:icon_name="flashlight" />
+        <icon
+            cmlauncher:icon="icons/message.png"
+            cmlauncher:icon_name="message" />
+        <icon
+            cmlauncher:icon="icons/music.png"
+            cmlauncher:icon_name="music" />
+        <icon
+            cmlauncher:icon="icons/phone.png"
+            cmlauncher:icon_name="phone" />
+        <icon
+            cmlauncher:icon="icons/record.png"
+            cmlauncher:icon_name="record" />
+        <icon
+            cmlauncher:icon="icons/settings.png"
+            cmlauncher:icon_name="settings" />
+        <icon
+            cmlauncher:icon="icons/video.png"
+            cmlauncher:icon_name="video" />
+    </icons>
+    <icons cmlauncher:icon_type="1" >
+        <icon
+            cmlauncher:icon="icons/clean_master.png"
+            cmlauncher:icon_name="ComponentInfo{com.cleanmaster.mguard/com.keniu.security.main.MainActivity}" />
+        <icon
+            cmlauncher:icon="icons/clean_master.png"
+            cmlauncher:icon_name="ComponentInfo{com.cleanmaster.mguard_cn/com.keniu.security.main.MainActivity}" />
+        <icon
+            cmlauncher:icon="icons/kbd_ic_saving.png"
+            cmlauncher:icon_name="ComponentInfo{com.ijinshan.kbatterydoctor/com.ijinshan.kbatterydoctor.SplashActivity}" />
+        <icon
+            cmlauncher:icon="icons/kbd_ic_saving.png"
+            cmlauncher:icon_name="ComponentInfo{com.ijinshan.kbatterydoctor_en/com.ijinshan.kbatterydoctor.SplashActivity}" />
+        <icon
+            cmlauncher:icon="icons/message_spirit.png"
+            cmlauncher:icon_name="ComponentInfo{com.ksmobile.launcher.plugin.unread/com.ksmobile.launcher.plugin.unread.MessageElvesActivity}" />
+        <icon
+            cmlauncher:icon="icons/cm_security.png"
+            cmlauncher:icon_name="ComponentInfo{com.cleanmaster.security/ks.cm.antivirus.main.SplashActivity}" />
+        <icon
+            cmlauncher:icon="icons/cm_security.png"
+            cmlauncher:icon_name="ComponentInfo{com.cleanmaster.security_cn/ks.cm.antivirus.main.SplashActivity}" />
+        <icon
+            cmlauncher:icon="icons/cm_security.png"
+            cmlauncher:icon_name="ComponentInfo{com.cleanmaster.security_x86/ks.cm.antivirus.main.SplashActivity}" />
+        <icon
+            cmlauncher:icon="icons/cm_locker.png"
+            cmlauncher:icon_name="ComponentInfo{com.cmcm.locker/com.cleanmaster.ui.cover.MainActivity}" />
+
+        <icon
+            cmlauncher:icon="icons/youtube.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.youtube/com.google.android.youtube.app.honeycomb.Shell$HomeActivity}" />
+        <icon
+            cmlauncher:icon="icons/instagram.png"
+            cmlauncher:icon_name="ComponentInfo{com.instagram.android/com.instagram.android.activity.MainTabActivity}" />
+        <icon
+            cmlauncher:icon="icons/skype.png"
+            cmlauncher:icon_name="ComponentInfo{com.skype.polaris/com.skype.raider.Main}" />
+        <icon
+            cmlauncher:icon="icons/skype.png"
+            cmlauncher:icon_name="ComponentInfo{com.skype.raider/com.skype.raider.Main}" />
+        <icon
+            cmlauncher:icon="icons/twitter.png"
+            cmlauncher:icon_name="ComponentInfo{com.twitter.android/com.twitter.android.StartActivity}" />
+        <icon
+            cmlauncher:icon="icons/facebook.png"
+            cmlauncher:icon_name="ComponentInfo{com.facebook.katana/com.facebook.katana.LoginActivity}" />
+        <icon
+            cmlauncher:icon="icons/ucmobile.png"
+            cmlauncher:icon_name="ComponentInfo{com.UCMobile.intl/com.UCMobile.main.UCMobile}" />
+        <icon
+            cmlauncher:icon="icons/whatsapp.png"
+            cmlauncher:icon_name="ComponentInfo{com.whatsapp/com.whatsapp.Main}" />
+        <icon
+            cmlauncher:icon="icons/messenger.png"
+            cmlauncher:icon_name="ComponentInfo{com.facebook.orca/com.facebook.orca.auth.StartScreenActivity}" />
+        <icon
+            cmlauncher:icon="icons/chrome.png"
+            cmlauncher:icon_name="ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}" />
+        <icon
+            cmlauncher:icon="icons/snapchat.png"
+            cmlauncher:icon_name="ComponentInfo{com.snapchat.android/com.snapchat.android.LandingPageActivity}" />
+        <icon
+            cmlauncher:icon="icons/cm_browser.png"
+            cmlauncher:icon_name="ComponentInfo{com.ksmobile.cb/com.ijinshan.browser.screen.SplashActivity}" />
+        <icon
+            cmlauncher:icon="icons/cm_browser.png"
+            cmlauncher:icon_name="ComponentInfo{com.ksmobile.cb/com.ijinshan.browser.screen.BrowserActivity}" />
+        <icon
+            cmlauncher:icon="icons/gmail.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.gm/com.google.android.gm.ConversationListActivityGmail}" />
+        <icon
+            cmlauncher:icon="icons/line.png"
+            cmlauncher:icon_name="ComponentInfo{jp.naver.line.android/jp.naver.line.android.activity.SplashActivity}" />
+        <icon
+            cmlauncher:icon="icons/googleplay.png"
+            cmlauncher:icon_name="ComponentInfo{com.android.vending/com.android.vending.AssetBrowserActivity}" />
+        <icon
+            cmlauncher:icon="icons/googlemaps.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.apps.maps/com.google.android.maps.MapsActivity}" />
+        <icon
+            cmlauncher:icon="icons/googleplus.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.apps.plus/com.google.android.apps.plus.phone.HomeActivity}" />
+        <icon
+            cmlauncher:icon="icons/bbm.png"
+            cmlauncher:icon_name="ComponentInfo{com.bbm/com.bbm.ui.activities.StartupActivity}" />
+        <icon
+            cmlauncher:icon="icons/viber.png"
+            cmlauncher:icon_name="ComponentInfo{com.viber.voip/com.viber.voip.WelcomeActivity}" />
+        <icon
+            cmlauncher:icon="icons/google.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.googlequicksearchbox.VoiceSearchActivity}" />
+        <icon
+            cmlauncher:icon="icons/googleplaygames.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.play.games/com.google.android.gms.games.ui.destination.main.MainActivity}" />
+        <icon
+            cmlauncher:icon="icons/vk.png"
+            cmlauncher:icon_name="ComponentInfo{com.vkontakte.android/com.vkontakte.android.MainActivity}" />
+        <icon
+            cmlauncher:icon="icons/snapchat.png"
+            cmlauncher:icon_name="ComponentInfo{com.snapchat.android/com.snapchat.android.LandingPageActivity}" />
+        <icon
+            cmlauncher:icon="icons/twitter.png"
+            cmlauncher:icon_name="ComponentInfo{com.twitter.android/com.twitter.android.StartActivity}" />
+        <icon
+            cmlauncher:icon="icons/googleplaymusic.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.music/com.android.music.activitymanagement.TopLevelActivity}" />
+        <icon
+            cmlauncher:icon="icons/googlephotos.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.apps.photos/com.google.android.apps.photos.home.HomeActivity}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.sonyericsson.album/com.sonyericsson.album.MainActivity}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.cooliris.media/com.cooliris.media.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.gallery3d/com.cooliris.media.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.android.camera/com.android.camera.GalleryPicker}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.htc.album/com.htc.album.AlbumMain.ActivityMainDropList}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.gallery3d/com.android.gallery3d.app.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.htc.album/com.htc.album.addons.ActivityImageViewer}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.google.android.gallery3d/com.android.gallery3d.app.GalleryActivity}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.android.gallery3d/com.android.gallery3d.app.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.miui.gallery/com.miui.gallery.app.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.sec.android.gallery3d/com.sec.android.gallery3d.app.GalleryActivity}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.sec.android.gallery3d/com.sec.android.gallery3d.app.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.htc.album/com.htc.album.AlbumMain.ActivityMainTabHost}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.motorola.motgallery/com.motorola.cgallery.Dashboard}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.motorola.MotGallery2/com.android.gallery3d.app.GalleryActivity}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.oppo.gallery3d/com.oppo.gallery3d.app.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.motorola.MotGallery2/com.android.gallery3d.app.Gallery}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.android.gallery3d/com.android.gallery3d.app.GalleryActivity}" />
+        <icon
+            cmlauncher:icon="icons/gallery.png"
+            cmlauncher:icon_name="ComponentInfo{com.android.gallery3d/com.huawei.gallery.app.GalleryActivity}" />
+    </icons>
+    <icons cmlauncher:icon_type="2" >
+        <icon
+            cmlauncher:icon="icons/clean_master.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.CleanMasterShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/cm_club.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.CMClubShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/desktop_setting_feedback.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.FeedbackShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/message_spirit.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.MessageSpiritShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/theme.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.ThemeShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/wallpaper.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.WallpaperShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/widget_all_apps.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.AllAppsShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/market.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.MarketShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/change_wallpaper.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.ChangeWallpaperShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/widget_recently.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.RecentlyOpenedShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/kbd_ic_saving.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.BatteryShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/app_manager.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.AppManagerShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/cm_locker.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.CMClockShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/cm_security.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.CMSecurityShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/gprs.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.NetManagerShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/cm_browser.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.CMBrowserShortcutInfo" />
+        <icon
+            cmlauncher:icon="icons/sort_apps.png"
+            cmlauncher:icon_name="com.ksmobile.launcher.customitem.SortAppsShortcutInfo" />
+    </icons>
+
+</themeIcons>

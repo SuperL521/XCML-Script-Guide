@@ -1,0 +1,33 @@
+gvar vICameraRotationX=null;
+gvar vICameraRotationY=null;
+
+function drawWallpaper();
+	root.setScale(CANVAS_SCALEXXHDPI);
+endfunction;
+
+function init();
+	var bgY = ThemeVariable.xxhdpi(-1200);
+	bg.setY(bgY);
+	bottom.setScale(0.9);
+	var floorGroupY = ThemeVariable.xxhdpi(-1000);
+	bottom.setY(floorGroupY);
+	body.setY(-700);
+	body.setScale(0.5);
+	body.setAlpha(255);
+	vICameraRotationX = new DValueInterpolator(0.2,-30,30);
+	vICameraRotationY = new DValueInterpolator(0.2,-30,30);
+endfunction;
+
+function onDrawStart();
+	var cRotationY = vICameraRotationY.getValue();
+	var cRotationX = vICameraRotationX.getValue();
+	body.setRotationY(cRotationY);
+	body.setRotationX(cRotationX);
+	vICameraRotationY.step();
+	vICameraRotationX.step();
+endfunction;
+
+function onRotationVectorSensorChanged();
+	vICameraRotationX.setTargetValueRotation(onRotationVectorSensorChanged_x);
+	vICameraRotationY.setTargetValueRotation(onRotationVectorSensorChanged_y);
+endfunction;
