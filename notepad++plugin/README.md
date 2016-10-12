@@ -1,0 +1,1 @@
+In Notepad++, choose the "Define your language" in the "language", then click "import" to import the "XCML_test.xml" file. Choose "XCML_TEST" in the "User language" then you can get code hinting when you program in XCML.

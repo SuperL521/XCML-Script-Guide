@@ -25,7 +25,7 @@ Developers: Wang Zhe, Tang Ji, Li Hai Chi, Chen Zhiwen, Chen Zhaoqi, Shao Wenbin
 
 Document maintenance: Shao Wenbin
 
-## 3D Themes framework
+## 3D Themes Framework
 
 As mentioned above, a 3D theme is built on a set of Andrews theme framework. The framework consists of two main components: the icons / weather / wallpaper / 3d models and the descriptive XML files. This section gives a brief introduction to the role of each part of the framework. About this topic architecture This tutorial is only a brief introduction, the specific details, please refer to the DIY CM Launcher theme tutorial.
 
@@ -43,7 +43,9 @@ As mentioned above, a 3D theme is built on a set of Andrews theme framework. The
 
 ###7. launcher_theme_3d_model.xml
 
-## XCML Script basic framework and commonly used tags
+###8. script.xcml
+
+## XCML Script Basic Framework and Commonly Used Tags
 
 Bin Script needs to be nested in Zhe Script, Zhe Script can be used alone. Zhe Script is actually a kind of XML, the basic syntax is also equivalent to XML.
 
@@ -158,37 +160,39 @@ Script section is the core of XCML Script. The so-called Bin Script is just the 
 
 ### 6. Logical judgment
 
-## Common Object and member function list
+## Common Object
 
 ### 1. Basic Object and Group
 
-### 2. Model
+| variable        | arguments list| return value|comment          | 
+| --------------- |:-----------------:|:-----------------:|:-----------------:|
+| setX| float |null|set x-axis of position in px|
+| setY| float |null|set y-axis of position in px|
+| setZ| float |null|set z-axis of position in px|
+| setXdp| float |null|set x-axis of position in dp|
+| setYdp| float |null|set y-axis of position in dp|
+| setZdp| float |null|set z-axis of position in dp|
+| setRotationX| float |null|in degree|
+| setRotationY| float |null|in degree|
+| setRotationZ| float |null|in degree|
+| setScale| float |null||
+| setAlpha| float |null|0-255|
+| getX| null |float||
+| getY| null |float||
+| getZ| null |float||
+| getAlpha| null |float||
+| dispatchDraw| null |null||
 
-### 3. Image
-
-## Global Static Functions and Static Variables ##
-
-###1. Math
-
-###2. Calculate
-
-###3. ThemeCommonUtils
-
-###4. SensorConverter
-
-###5. Product
-
-###6. TimeData
-
-###7. Setting
-
-### 8. Global static variables
+###2. Model
+###3. Image
+###4. Sphere
 
 ## Model Import and Screen Adaptation ##
 
 ### 1. OBJ format
 
 XCML Script supports the OBJ format exported by 3DS MAX. So if you are using other modeling software such as Maya, Camera4D, etc., please export a 3ds max can support the format, then export obj in 3ds max. 
+
 Obj files exported by mainstream modeling software can be supported, but sometimes there will also be some problems. For example, Maya-exported obj must be triangulated, or there could be a bug that some areas cannot be displayed. The information about the position, size, rotation center, texture UV, etc. of the model will be saved. Please adjust these in the modeling software and export it.
 
 **If a scene has more than one model, now in the modeling software to load all the models to adjust the size and position and then export one by one. In the XCML Script in the adjustment will be too cumbersome and may be the problem of adaptation.**
@@ -203,23 +207,33 @@ Because the model file is initially read in at once, an oversized model can caus
 
 ### 4. Lighting and materials
 
-Currently does not support the mainstream modeling software, lighting and materials, can only be achieved with GLSL shader. About the shader, the latter chapters are described in detail.
+Currently there is no support for the lighting and materials in mainstream modeling software. These can only be implemented with GLSL shaders. About the shaders, the latter chapters are described in detail.
 
 ### 5. Screen adaptation issues and scenarios
 
-Screen adaptation Android application has always been an inevitable big problem, as Android mobile phones vary too much, different brands of different models of mobile phone screen size and resolution gap. In 3d scenes, the effect of different sizes and resolutions may be completely different. In order to solve the adaptation problem, please try to avoid using px as the unit of operation and use dp as the unit of operation. To scale an Object, use the ThemeCommonUtils mentioned above to convert the values ​​and use them as function arguments. To reduce tedious operations, do not use too many animations that involve location information.
+Screen adaptation Android application has always been an inevitable big problem, as Android mobile phones vary too much, different brands of different models of mobile phone screen size and resolution gap. In 3d scenes, the effect of different sizes and resolutions may be completely different. In order to solve the adaptation problem, please try to avoid using px as the unit of operation and use dp as the unit of operation. To scale an Object, use the ThemeVariable mentioned later to convert the values ​​and use them as function arguments. To reduce tedious operations, do not use too many animations that involve location information. It is recommanded that the design should be done in xxxhdpi(1920*1080) standard. The following codes show the "test" model designed in xxxhdpi is being scaled to fullscreen:
+
+```
+test.setScale(CANVAS_SCALEXXHDPI);
+```
+
+The following codes aim to convert the value of "-1200" in xxxhdpi to the adapted value in current mobile.
+
+```
+var test = ThemeVariable.xxhdpi(-1200);
+```
+
+Here "CANVAS_SCALEXXHDPI" and "ThemeVariable" are global variables and global functions which will be introduced later. The function calling synatx belonged to the syntax of bin script, which will be discribed soon.
+
 
 ## Bin Script Syntax ##
 
 Bin Script is currently being refined. Curly braces are not supported, so be sure to pay attention to code alignment. The current version, Bin Script can only be used within the Script tag and must start with a "<! [CDATA [" and at end with a "]]>". Such as:
 
+
 ```xml
-<Script>
-<! [CDATA [
-  var test_your_codes_here = 0;
-]]>
-</Script>
-```
+<Script filename="script.xcml" />
+``` 
 
 In the bottom of the program, Bin Script code will be translated into Zhe Script code.
 
@@ -235,9 +249,14 @@ var test_boolean = true;
 
 The float variable must end in "f". Boolean type must use "true" or "false" to define and assign values, does not support other assignment methods and does not support other types of coercion. Do not support long or double and other data types, maximum support only 4 bytes, please be careful not to produce a variable overflow.
 
-The scope of a "var" variable is the tag or function within which the variable is located. In other words, if all scripts are written as required outside the event function under the script in the Wallpaper tag, all variables will be global. Like JS, "var" can be re-declared first. "gvar" is a global variable that can be declared in the entire XML file.
+The scope of a "var" variable is the tag or function within which the variable is located. Like JS, "var" can be re-declared first. "gvar" is a global variable that can be declared in the entire XML file. The global variable has better to be started with "g" as a good programming style.
 
-**We recommend that you assign an initial value to the variable declaration.**
+```
+gvar gTest = 0;
+```
+
+
+**We recommend that you assign an initial value in variable declaration.**
 
 ### 2. The array
 
@@ -310,7 +329,7 @@ var scale = exp (2 * 3);
 test.setScale (scale);
 ```
 
-## Event-driven programming
+## Event-driven Programming
 
 As mentioned above, the complex programming paradigm is the XCML Script difficult. Event-driven programming is commonly used in game programming paradigm, it refers to the implementation of the corresponding procedures for different events. In other words, most of the script is in a specific event. In addition to a specific event, only a number of variables such as statements of operation. The logical relationship between the code modules is the logical relationship under different events. XCML Script currently supports the following six types of event functions.
 
@@ -333,14 +352,11 @@ Here "onDrawStart" is one of the six event functions, replacing it with other na
 Each Object has an init method to do some initialization. As mentioned above, most of the properties can be defined in the Object declaration, but because the declaration does not support variables, so some operations must be done in the init, for example, let a test width of 540 full-screen Image. For example:
 
 ```
-function init ();
-  var CanvasWidth = ThemeVariable.getCanvasWidth ();
-  var scaleUnit = exp (CanvasWidth / 540f);
-  test.setScale (scaleUnit);
+function init();
+  test.setScale(CANVAS_SCALE_FROM540);
 endfunction;
 ```
-
-Typically, the initialization is to carry out some screen adaptation operation. "drawWallpaper" is similar to "init", but also for some initialization, the difference is that only in the special label Wallpaper drawWallpaper call. If we follow the recommendations in the use of Script in Wallpaper, the function of the same drawWallpaper and init. DrawWallpaper There is also a special feature that is commonly used in the above mentioned "dispatchDraw". The following code shows the use of a group called group dispatchDraw, if you do not use the function will lead to the group of all Object can not be displayed.
+"CANVAS_SCALE_FROM540" is a global variable. Usually, the initialization is to carry out some screen adaptation operation. "drawWallpaper" is similar to "init", but also for some initialization, the difference is that only in the special label Wallpaper drawWallpaper call. If we follow the recommendations in the use of Script in Wallpaper, the function of the same drawWallpaper and init. DrawWallpaper There is also a special feature that is commonly used in the above mentioned "dispatchDraw". The following code shows the use of a group called group dispatchDraw, if you do not use the function will lead to the group of all Object can not be displayed.
 
 ```
 function drawWallpaper ();
@@ -382,13 +398,78 @@ OnTouchUp Called at the end of touch
 OnTouchMove Called when the touch moves, can be used to capture the touch track, at the beginning and end of the touch will be called. It is typically used to implement gesture-following effects.
 The corresponding onTouchDown_x / onTouchDown_y, onTouchUp_x / onTouchUp_y, onTouchMove_x / onTouchMove_y, three pairs of global static variables, the corresponding events in the corresponding call to achieve the required variables.
 
-For example:
+### 6. onRotationVectorSensorChanged
 
+When the RotationVectorSensor is changed, the most commonly used is to get the rotation angle of the current gyroscope. 
 
-### 6. OnSensorChanged
+This event function will be called when the RotationVectorSensor is changed as well as the mobile is rotated. In the bottom, this sensor is called once every 3 frames, which is to save power. As the current engine and no camera class, most of the 3D theme of the three-dimensional sense to rely on the sensor to achieve. Similar to the touch event function, the event function also has a dedicated static variable.
 
-When the sensor is changed, the most commonly used is to get the rotation angle of the current gyroscope. In our test process, sensor proved to be the most power, so if the consideration for power, you can not use the sensor. In the bottom, sensor is called once every 3, which is to save power, so careful observation will be slightly not smooth. As the current engine and no camera class, most of the 3D theme of the three-dimensional sense to rely on the sensor to achieve. Similar to the touch event function, the event function also has a dedicated static variable.
-For example:
+| variable        | comment          | 
+| ------------------------------ |:-----------------:|
+| onRotationVectorSensorChanged_x| the rotation angle in x-axis |
+| onRotationVectorSensorChanged_y| the rotation angle in y-axis | 
+| onRotationVectorSensorChanged_z| the rotation angle in z-axis |
+
+The following codes show how to rotate the model as the rotation of the mobile.
+
+```
+gvar gRotationX = 0;
+gvar gRotationY = 0;
+
+function onDrawStart();
+  test.setRotationX(gRotationX);
+  test.setRotationY(gRotationY);
+endfunction;
+
+function onRotationVectorSensorChanged();
+  gRotationX = onRotationVectorSensorChanged_x;
+  gRotationY = onRotationVectorSensorChanged_y;
+endfunction;
+
+```
+
+## Global Static Class and Global Variables ##
+
+In order to facilitate the development, there are somesystem functions and system variables. Similar with the class C language global static functions and global static variables, these functions and variables can be called directly anywhere in XCML Script without initialization statement. The following codes show how to get a random number 0-10:
+
+```
+var test = Math.getRandom(10);
+```
+
+###1. Math
+
+This class is for mathematic caculation.
+
+| variable        | arguments list| return value|comment          | 
+| --------------- |:-----------------:|:-----------------:|:-----------------:|
+| sin| float |float|equal to"java.lang.Math.sin"|
+| cos| float |float|equal to"java.lang.Math.cos"|
+| tan| float |float|equal to"java.lang.Math.tan"|
+| getPI| null |float|equal to"java.lang.Math.PI"|
+| abs| float |float|equal to"java.lang.Mat.abs"|
+| toDegrees| float |float|equal to"java.lang.Math.toDegree"|
+| toRadian| float |float|equal to"java.lang.Math.toRadian"|
+| getRandom| int |int|get a random value in the range of [0,i] where "i" is the argument|
+
+###2. ThemeVariable
+
+| variable        | arguments list| return value|comment          | 
+| --------------- |:-----------------:|:-----------------:|:-----------------:|
+| xxhdpi| float |float||
+| getDragIconX| null |float||
+| getDragIconY| null |float||
+| getDragIconStartX| null |float||
+| getDragIconStartY| null |float||
+| getDPfromPX| float |float|convert value from pixels to DP |
+
+###3. Global Variables
+
+| variable        | comment          | 
+| ------------------------------ |:-----------------:|
+| CANVAS_WIDTH| the width of system canvas|
+| CANVAS_HEIGHT| the height of system canvas|
+| CANVAS_SCALEXXHDPI| the value scaled to fullscreen in the xxhdpi standard|
+| CANVAS_SCALE_FROM540| the value scaled to fullscreen for an image with 540px width|
 
 
 ## Special Object
@@ -399,13 +480,11 @@ For example:
 
 ### 3. Timer
 
-### 4
+## Animation Class
 
-## Animation classes
+## Advanced Classes
 
-## Advanced classes
-
-## Particle system related classes
+## Particle System Related Classes
 
 ## GLSL SHADER
 

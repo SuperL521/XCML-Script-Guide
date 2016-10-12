@@ -10,8 +10,8 @@ XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初
 
 ###2. ISSUES
 学习XCML Script最大的问题在于两点：
-1. 由于历史原因，有很多API用处少、有bug且不规范，但是为了向上兼容，这些旧API又必须被保留，因此极容易与现有API混淆；
-2. 由于最初需求、基础架构等等问题，目前的XCML Script的编程范式极为诡异：既面向对象又面向过程，既有事件驱动又有函数响应式，因而显得不伦不类，学习成本很高。
+1. 由于历史原因，有很多API用处少、有bug且不规范，但是为了向上兼容，这些旧API又必须被保留，因此极容易与现有API混淆；
+2. 由于最初需求、基础架构等等问题，目前的XCML Script的编程范式极为诡异：既面向对象又面向过程，既有事件驱动又有函数响应式，因而显得不伦不类，学习成本很高。
 
 此外，由于XCML Script之前没有统一规范，以至于目前已有的Zhe Script代码可读性不佳。我们强烈建议您按照本网站提供的规范来写XCML Script以避免不必要的错误。XCML Script的解析在CM Launcher下完成，因此我们建议您保持你的CM Launcher时刻为最新版本以避免已被消除的bug和支持全部功能。
 
@@ -41,6 +41,8 @@ XCML Script可以分为两部分：Zhe Script和Bin Script。Zhe Script是最初
 
 ###7. launcher_theme_3d_model.xml
 
+###8. script.xcml
+
 ##XCML Script的基础框架和常用标签
 
 Bin Script需要嵌套在Zhe Script中，Zhe Script可以单独使用。Zhe Script其实就是一种XML，基本语法也与XML等同。
@@ -64,9 +66,9 @@ Wallpaper是仅次于Theme标签以外的最外层标签，标准化写法为：
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Theme effect="sphere" version="1">
-  <Wallpaper name="elementWallpaper">
-     <!--your codes here-->
-  </Wallpaper>
+  <Wallpaper name="elementWallpaper">
+     <!--your codes here-->
+  </Wallpaper>
 </Theme>
 ```
 
@@ -107,12 +109,12 @@ Group是一个Object的一个集合，一个Group标签里可以包含任意个�
 
 ```xml
 <Group name="group0">
-  <Image name="test0" texture="img"/>
-  <Image name="test1" texture="img"/>
-  <Group name="group1">
-    <Image name="test2" texture="img"/>
-  </Group>
-  <Image name="test3" texture="img"/>
+  <Image name="test0" texture="img"/>
+  <Image name="test1" texture="img"/>
+  <Group name="group1">
+    <Image name="test2" texture="img"/>
+  </Group>
+  <Image name="test3" texture="img"/>
 </Group>
 ```
 
@@ -131,8 +133,8 @@ RootGroup是一种特殊的Group，它的声明为：
 ```
 
 RootGroup与Group的区别在于：
-1. RootGroup下的Object支持“对象事件”，将于后面章节详细介绍；
-2. RootGroup下的Object无需在drawWallpaper里进行dispatchDraw操作。
+1. RootGroup下的Object支持“对象事件”，将于后面章节详细介绍；
+2. RootGroup下的Object无需在drawWallpaper里进行dispatchDraw操作。
 
 
 ###5. Script
@@ -158,14 +160,31 @@ Script部分是XCML Script的重点所在。所谓Bin Script就是把Script标�
 
 ##常用Object和成员函数列表
 
+
 ###1. 基础Object和Group
 
+| variable        | arguments list| return value|comment          | 
+| --------------- |:-----------------:|:-----------------:|:-----------------:|
+| setX| float |null|set x-axis of position in px|
+| setY| float |null|set y-axis of position in px|
+| setZ| float |null|set z-axis of position in px|
+| setXdp| float |null|set x-axis of position in dp|
+| setYdp| float |null|set y-axis of position in dp|
+| setZdp| float |null|set z-axis of position in dp|
+| setRotationX| float |null|in degree|
+| setRotationY| float |null|in degree|
+| setRotationZ| float |null|in degree|
+| setScale| float |null||
+| setAlpha| float |null|0-255|
+| getX| null |float||
+| getY| null |float||
+| getZ| null |float||
+| getAlpha| null |float||
+| dispatchDraw| null |null||
+
 ###2. Model
-
 ###3. Image
-
-
-
+###4. Sphere
 
 ##模型导入和屏幕适配##
 
@@ -182,7 +201,7 @@ XCML Script支持的dae格式为3ds max、maya下导出的dae格式(勾选三角
 ```xml
 <Model name="koi_1" modelType="DAE" modelfile="dae_koi" x="-200" z="300" texture="koi_body_texture_1" animationMode="LOOP" depthTestEnabled="true">
   <Script>
-  <!--your codes here-->
+  <!--your codes here-->
   </Script>
 </Model>
 ```
@@ -198,7 +217,7 @@ XCML Script支持的dae格式为3ds max、maya下导出的dae格式(勾选三角
 
 ###5. 屏幕适配问题和方案
 
-屏幕适配一直是Android应用不可避免的大问题，由于Android手机品类过多，不同品牌不同型号的手机屏幕尺寸和分辨率差距极大。而在3d场景中，不一样的尺寸和分辨率出现的效果可能完全不同。为了解决适配问题，请尽量避免使用以px为单位的操作而使用以dp为单位的操作。对Object进行的缩放操作，请使用上文提到的ThemeCommonUtils和ThemeVariable转换数值后再用作函数参数。为减少繁琐的操作，请不要使用过多的涉及到位置信息的动画。我们建议您在设计时以xxhdpi（1920*1080）为参考标准，然后在脚本里进行一些适配操作。如下代码可以让一个xxhdpi标准下设计的模型在手机上全屏：
+屏幕适配一直是Android应用不可避免的大问题，由于Android手机品类过多，不同品牌不同型号的手机屏幕尺寸和分辨率差距极大。而在3d场景中，不一样的尺寸和分辨率出现的效果可能完全不同。为了解决适配问题，请尽量避免使用以px为单位的操作而使用以dp为单位的操作。对Object进行的缩放操作，请使用下文提到的ThemeVariable转换数值后再用作函数参数。为减少繁琐的操作，请不要使用过多的涉及到位置信息的动画。我们建议您在设计时以xxhdpi（1920*1080）为参考标准，然后在脚本里进行一些适配操作。如下代码可以让一个xxhdpi标准下设计的模型在手机上全屏：
 
 ```
 test.setScale(CANVAS_SCALEXXHDPI);
@@ -214,16 +233,13 @@ var test = ThemeVariable.xxhdpi(-1200);
 
 ##Bin Script语法##
 
-Bin Script目前还在不断完善中。暂时还不支持大括号，因此请务必注意代码对齐。目前版本，Bin Script只能在Script标签内使用，还要在开始加上一个<![CDATA[标识，并在结束加上]]>标识。如：
-```xml
-<Script>
-  <![CDATA[
-    var test_your_codes_here = 0;
-  ]]>
-</Script>
-```
+Bin Script is still in continuous improvement. Not yet support braces, so be sure to note the code alignment. All the Bin Script should be written in the "script.xcml" file and then be called the "Script" tag:
 
-在程序底层，Bin Script代码会被翻译成Zhe Script代码。
+```xml
+<Script filename="script.xcml" />
+``` 
+
+In the bottom of the program, Bin Script codes will be converted to Zhe Script.
 
 ###1. 变量的类型和作用域
 
@@ -253,7 +269,7 @@ gvar gTest = 0;
 
 ```
 function onDrawStart();
- var test_your_codes_here = 0;
+ var test_your_codes_here = 0;
 endfunction;
 ```
 
@@ -277,21 +293,21 @@ var test1 = false;
 var test_your_value = 0;
 
 if(test0);
-  test_your_value = 1;
+  test_your_value = 1;
 endif;
 
 if(test0);
-  test_your_value = 1;
+  test_your_value = 1;
 else;
-  test_your_value = 2;
+  test_your_value = 2;
 endif;
 
 if(test0);
-  test_your_value = 1;
+  test_your_value = 1;
 else if(test1);
-  test_your_value = 2;
+  test_your_value = 2;
 else;
-  test_your_value = 3;
+  test_your_value = 3;
 endif;
 ```
 
@@ -302,7 +318,7 @@ var test0 = 0;
 var test1 = 1;
 
 if(test0<test1);
-  test0 = 2;
+  test0 = 2;
 endif;
 ```
 
@@ -326,7 +342,7 @@ test.setScale(scale);
 var test_your_value = 0;
 
 function onDrawStart();
-  test_your_value = 1;
+  test_your_value = 1;
 endfunction;
 ```
 
@@ -340,7 +356,7 @@ endfunction;
 
 ```
 function init();
-  test.setScale(CANVAS_SCALE_FROM540);
+  test.setScale(CANVAS_SCALE_FROM540);
 endfunction;
 ```
 
@@ -348,7 +364,7 @@ CANVAS_SCALE_FROM540是一个系统全局变量。通常，初始化都是进行
 
 ```
 function drawWallpaper();
-  group.dispatchDraw();
+  group.dispatchDraw();
 endfunction;
 ```
 
@@ -365,10 +381,10 @@ onDrawStart是XCML Script中最核心的事件，绝大部分操作都在onDrawS
 ```
 var isDesktopEffectRunning = false;
 function onDesktopEffectStart();
-  isDesktopEffectRunning = true;
+  isDesktopEffectRunning = true;
 endfunction;
 function onDesktopEffectEnd();
-  isDesktopEffectRunning = false;
+  isDesktopEffectRunning = false;
 endfunction;
 ```
 
@@ -390,10 +406,12 @@ onTouchMove在触摸移动时调用，可以用来捕捉触摸轨迹，在触摸
 在RotationVectorSensor改变时被调用，最常用的就是用来获得当前手机的旋转角度。
 在我们的测试过程中，这个系统事件函数被证明是最耗电的。在底层，RotationVectorSensor是每3帧调用一次，这也是为了节省电量，因此仔细观察会有轻微的不流畅。与触摸事件函数类似，该事件函数也有专属的静态变量：
 
-|-------------------------------|------------------|
-|onRotationVectorSensorChanged_x|x轴上sensor旋转的值|
-|onRotationVectorSensorChanged_y|y轴上sensor旋转的值|
-|onRotationVectorSensorChanged_z|z轴上sensor旋转的值|
+| variable        | comment          | 
+| ------------------------------ |:-----------------:|
+| onRotationVectorSensorChanged_x| the rotation angle in x-axis |
+| onRotationVectorSensorChanged_y| the rotation angle in y-axis | 
+| onRotationVectorSensorChanged_z| the rotation angle in z-axis |
+
 
 以下代码实现了每当手机屏幕旋转时，模型test也跟着旋转：
 
@@ -413,32 +431,58 @@ endfunction;
 
 ```
 
-##全局静态函数和静态变量##
+##系统静态Object和系统变量##
+为了方便开发，XCML Script内置了一系列的系统函数和系统变量。相当于类C语言中全局静态函数和全局静态变量，这些函数和变量可以在XCML Script任何地方调用，无需进行初始化声明等操作。以下代码实现了获得一个0-10的随机数：
+```
+var test = Math.getRandom(10);
+```
 
-###1. Math
+###1. Math类
+进行数学相关计算。
 
-###2. Calculate
+| variable        | arguments list| return value|comment          | 
+| --------------- |:-----------------:|:-----------------:|:-----------------:|
+| sin| float |float|equal to"java.lang.Math.sin"|
+| cos| float |float|equal to"java.lang.Math.cos"|
+| tan| float |float|equal to"java.lang.Math.tan"|
+| getPI| null |float|equal to"java.lang.Math.PI"|
+| abs| float |float|equal to"java.lang.Mat.abs"|
+| toDegrees| float |float|equal to"java.lang.Math.toDegree"|
+| toRadian| float |float|equal to"java.lang.Math.toRadian"|
+| getRandom| int |int|get a random value in the range of [0,i] where "i" is the argument|
 
-###3. ThemeCommonUtils
+###2. ThemeVariable类
 
-###5. Product
+| variable        | arguments list| return value|comment          | 
+| --------------- |:-----------------:|:-----------------:|:-----------------:|
+| xxhdpi| float |float||
+| getDragIconX| null |float||
+| getDragIconY| null |float||
+| getDragIconStartX| null |float||
+| getDragIconStartY| null |float||
+| getDPfromPX| float |float|convert value from pixels to DP |
 
-###6. TimeData
+###3. 系统变量
+系统变量可以直接使用。目前只有四个，常用作适配处理。
 
-###7. Setting
+| variable        | comment          | 
+| ------------------------------ |:-----------------:|
+| CANVAS_WIDTH| the width of system canvas|
+| CANVAS_HEIGHT| the height of system canvas|
+| CANVAS_SCALEXXHDPI| the value scaled to fullscreen in the xxhdpi standard|
+| CANVAS_SCALE_FROM540| the value scaled to fullscreen for an image with 540px width|
 
-###8. 系统全局变量
 
+##特殊Class
 
-##特殊的变量
+目前XCML并不支持自定义class
 
 ###1. ValueInterpolate
 
-###2. WaveInterpolate
 
-###3. Timer
+###2. Timer
 
-###4. Others
+
 
 ##动画类
 
