@@ -1,10 +1,6 @@
 gvar vICameraRotationX=null;
 gvar vICameraRotationY=null;
 
-function drawWallpaper();
-	root.setScale(CANVAS_SCALEXXHDPI);
-endfunction;
-
 function init();
 	var bgY = ThemeVariable.xxhdpi(-1200);
 	bg.setY(bgY);
@@ -16,6 +12,7 @@ function init();
 	body.setAlpha(255);
 	vICameraRotationX = new DValueInterpolator(0.2,-30,30);
 	vICameraRotationY = new DValueInterpolator(0.2,-30,30);
+	root.setScale(CANVAS_SCALEXXHDPI);
 endfunction;
 
 function onDrawStart();

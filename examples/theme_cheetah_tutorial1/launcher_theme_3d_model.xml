@@ -4,9 +4,8 @@
         <RootGroup name="root">
             <Model name="bg" modelType="OBJ" modelfile="BGwall" depthTestEnabled="true" texture="BGwall_texture"/>
             <Model name="bottom" modelType="OBJ" modelfile="bottom" depthTestEnabled="true" texture="bottom_texture" />
-            <Model name="body" modelType="OBJ" modelfile="body" texture="body_texture" facetype="0" depthTestEnabled="true"/>
+            <Model name="body" modelType="OBJ" modelfile="body" texture="body_texture" depthTestEnabled="true"/>
         </RootGroup>
-
         <Script name="script.xcml"/>
     </Wallpaper>
 </Theme>

@@ -364,8 +364,6 @@ function drawWallpaper ();
 endfunction;
 ```
 
-**We recommend that all initialization operations are done in the drawWallpaper instead of using "init".**
-
 ### 2. OnDrawStart
 
 "onDrawStart" in XCML Script is the core of the incident, the vast majority of operations are carried out onDrawStart. Equivalent to many other languages ​​in the update function, onDrawStart is called by frame, which means that usually this function is to be called 60 times per second. As the core, onDrawStart is usually the culprit of the 3D theme caused by Caton. OnDrawStart performs more operations will bring more performance loss, it should be skillfully avoided in the onDrawStart in too many operations.

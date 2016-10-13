@@ -233,7 +233,7 @@ var test = ThemeVariable.xxhdpi(-1200);
 
 ##Bin Script语法##
 
-Bin Script is still in continuous improvement. Not yet support braces, so be sure to note the code alignment. All the Bin Script should be written in the "script.xcml" file and then be called the "Script" tag:
+Bin Script现在依然在逐步完善。目前不支持括号，所以请注意代码对齐。所有的Bin Script请写在"script.xcml"文件内然后在"Script"标签下调用：
 
 ```xml
 <Script filename="script.xcml" />
@@ -367,8 +367,6 @@ function drawWallpaper();
   group.dispatchDraw();
 endfunction;
 ```
-
-**我们建议把所有初始化操作都放在drawWallpaper里完成而不要再使用init**
 
 ###2. onDrawStart
 
