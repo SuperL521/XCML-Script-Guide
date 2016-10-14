@@ -13,7 +13,7 @@
             <Keywords name="Numbers, suffix1"></Keywords>
             <Keywords name="Numbers, suffix2"></Keywords>
             <Keywords name="Numbers, range"></Keywords>
-            <Keywords name="Operators1">+ - / =  &lt; &gt; - ! . ( ) [ ] | { } ; \ ?</Keywords>
+            <Keywords name="Operators1">+ - / = &lt; &gt; - ! . ( ) [ ] | { } ; \ ?</Keywords>
             <Keywords name="Operators2"></Keywords>
             <Keywords name="Folders in code1, open"></Keywords>
             <Keywords name="Folders in code1, middle"></Keywords>
@@ -27,8 +27,8 @@
             <Keywords name="Keywords1">CDATA DValueInterpolator ElementEffectCore FrameImage Group Image ImageSwitch ImageWiper LightTail Model ParallaxImage ParticleEmitter ParticlePoint ParticleTail Particle2D Path RootGroup Script Sphere Theme Theme3dArgs Timer TimingAnimation ValueInterpolator Wallpaper WaterRipple WaveInterpolator xml</Keywords>
             <Keywords name="Keywords2">animationMode depthTestEnabled effect encoding facetype height limitRange modelfile modelType name speed texture type value version width x y z</Keywords>
             <Keywords name="Keywords3">else endfunction endif function gvar if var</Keywords>
-            <Keywords name="Keywords4">init onDrawStart onDesktopEffectStart onDesktopEffectEnd onRotationVectorSensorChanged&#x000D;&#x000A;setX setY setZ setXdp setYdp setZdp setRotationX setRotationY setRotationZ setScale&#x000D;&#x000A;setScaleX setScaleY setScaleZ setAlpha setVisible setDepthTestEnabled setRenderFaceType&#x000D;&#x000A;setScaleUnit setLightPosition getX getY getZ getRotationX getRotationY getRotationZ&#x000D;&#x000A;getScaleX getScaleY getScaleZ getAlpha getVisible exp step getValue getFloatFromArray&#x000D;&#x000A;setTargetValueRotation getRotationXYZDegreesArray setTargetValueRotation xxhdpi</Keywords>
-            <Keywords name="Keywords5">CANVAS_WIDTH CANVAS_HEIGHT CANVAS_SCALEXXHDPI CORE_ALPHA onRotationVectorSensorChanged_value</Keywords>
+            <Keywords name="Keywords4">init onDrawStart onDesktopEffectStart onDesktopEffectEnd onRotationVectorSensorChanged&#x000D;&#x000A;setX setY setZ setXdp setYdp setZdp setRotationX setRotationY setRotationZ setScale&#x000D;&#x000A;setScaleX setScaleY setScaleZ setAlpha setVisible setDepthTestEnabled setRenderFaceType&#x000D;&#x000A;setScaleUnit setLightPosition getX getY getZ getRotationX getRotationY getRotationZ&#x000D;&#x000A;getScaleX getScaleY getScaleZ getAlpha getVisible exp step getValue getFloatFromArray&#x000D;&#x000A;setTargetValueRotation getRotationXYZDegreesArray setTargetValueRotation xxhdpi dispatchDraw&#x000D;&#x000A;drawWallpaper onIconStartDrag onIconEndDrag onTouchMove onTouchDown onTouchUp sin cos tan&#x000D;&#x000A;getPI abs toDegrees toRadian getRandom getDragIconX getDragIconY getDragIconStartX getDragIconStartY&#x000D;&#x000A;getDPfromPX</Keywords>
+            <Keywords name="Keywords5">CANVAS_WIDTH CANVAS_HEIGHT CANVAS_SCALEXXHDPI CORE_ALPHA onRotationVectorSensorChanged_value&#x000D;&#x000A;CANVAS_SCALE_FROM540</Keywords>
             <Keywords name="Keywords6">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z _</Keywords>
             <Keywords name="Keywords7">a b c d e f g h i j k l m n o p q r s t u v w x y z _ 1 2 3 4 5 6 7 8 9 0</Keywords>
             <Keywords name="Keywords8"></Keywords>
